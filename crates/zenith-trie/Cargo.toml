@@ -1,0 +1,15 @@
+[package]
+name = "zenith-trie"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "High-performance, memory-compact Radix Topic Trie for MQTT topic filtering"
+
+[features]
+default = ["std"]
+std = ["zenith-core/std"]
+alloc = ["zenith-core/alloc"]
+
+[dependencies]
+zenith-core = { path = "../zenith-core", default-features = false }

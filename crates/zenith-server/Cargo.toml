@@ -1,0 +1,20 @@
+[package]
+name = "zenith-server"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "High-throughput multi-threaded MQTT server (<2MB footprint)"
+
+[features]
+default = ["std"]
+std = ["zenith-core/std", "zenith-trie/std", "zenith-broker/std"]
+
+[dependencies]
+zenith-core = { path = "../zenith-core", features = ["std"] }
+zenith-trie = { path = "../zenith-trie", features = ["std"] }
+zenith-broker = { path = "../zenith-broker", features = ["std"] }
+
+[[bin]]
+name = "zenith-server"
+path = "src/main.rs"

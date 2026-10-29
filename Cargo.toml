@@ -1,0 +1,28 @@
+[workspace]
+members = [
+    "crates/zenith-core",
+    "crates/zenith-trie",
+    "crates/zenith-broker",
+    "crates/zenith-server",
+    "crates/zenith-embedded",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Zenith MQTT Team"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/zenith-mqtt/zenith"
+
+[profile.release]
+opt-level = "z"        # Optimize for binary size
+lto = "fat"            # Fat Link-Time Optimization across all crates
+codegen-units = 1      # Maximize compiler optimization opportunities
+panic = "abort"        # Eliminate unwinding landing pads and tables
+strip = "symbols"      # Automatically strip symbols from the binary
+overflow-checks = false
+
+[profile.release-perf]
+inherits = "release"
+opt-level = 3          # Maximum speed when pure throughput is prioritized

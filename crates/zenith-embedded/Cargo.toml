@@ -1,0 +1,19 @@
+[package]
+name = "zenith-embedded"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Micro-broker profile designed for microcontrollers (<200KB footprint)"
+
+[features]
+default = []
+std = ["zenith-core/std", "zenith-broker/std"]
+
+[dependencies]
+zenith-core = { path = "../zenith-core", default-features = false }
+zenith-broker = { path = "../zenith-broker", default-features = false }
+
+[[bin]]
+name = "zenith-embedded"
+path = "src/main.rs"
